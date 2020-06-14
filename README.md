@@ -3,7 +3,9 @@
 python main.py --path_data=[path] --datasource [data_source] --train_iterations 0 --arch [architecture] --target_sparsity [sparsity]
 ```
 `path` is path do dataset
+
 Options for `datasource`: `mnist` or `cifar-10`
+
 Options for `architecture`: `lenet300` (MNIST), `lenet5` (MNIST), `alexnet-v1` (CIFAR), `alexnet-v2` (CIFAR), `vgg-c` (CIFAR), `vgg-d` (CIFAR), `vgg-like` (CIFAR)
 
 Example: 
