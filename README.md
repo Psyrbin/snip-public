@@ -1,3 +1,16 @@
+## Usage
+```
+python main.py --path_data=[path] --datasource [data_source] --train_iterations 0 --arch [architecture] --target_sparsity [sparsity]
+```
+`path` is path do dataset
+Options for `datasource`: `mnist` or `cifar-10`
+Options for `architecture`: `lenet300` (MNIST), `lenet5` (MNIST), `alexnet-v1` (CIFAR), `alexnet-v2` (CIFAR), `vgg-c` (CIFAR), `vgg-d` (CIFAR), `vgg-like` (CIFAR)
+
+Example: 
+```
+python main.py --path_data=../data/ --datasource mnist --train_iterations 0 --arch lenet300 --target_sparsity 0.5
+```
+
 # SNIP
 This repository contains code for the paper [SNIP: Single-shot Network Pruning based on Connection Sensitivity (ICLR 2019)](https://arxiv.org/abs/1810.02340).
 

@@ -17,6 +17,9 @@ def train(args, model, sess, dataset):
     writer['val'] = tf.summary.FileWriter(args.path_summary + '/val')
     t_start = time.time()
 
+    if args.train_iterations == 0:
+        saver.save(sess, args.path_model + '/itr-0')
+
     for itr in range(args.train_iterations):
         batch = dataset.get_next_batch('train', args.batch_size)
         batch = augment(batch, args.aug_kinds, random_state)
