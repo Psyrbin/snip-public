@@ -67,6 +67,7 @@ class Model(object):
             grads = tf.gradients(loss, [mask_init[k] for k in prn_keys])
             gradients = dict(zip(prn_keys, grads))
             cs = normalize_dict({k: tf.abs(v) for k, v in gradients.items()})
+            # cs = normalize_dict({k: tf.math.negative(v) for k, v in gradients.items()})
             return create_sparse_mask(cs, self.target_sparsity)
 
         mask = tf.cond(self.compress, lambda: get_sparse_mask(), lambda: mask_prev)

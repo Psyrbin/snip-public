@@ -1,4 +1,5 @@
 import tensorflow as tf
+import numpy as np
 
 from functools import reduce
 from helpers import static_size
@@ -32,12 +33,20 @@ def load_network(
     }
     return networks[arch]()
 
+class signed_constant_initializer(tf.keras.initializers.Initializer):
+    def __init__(self, dtype=tf.dtypes.float32):
+        self.dtype = dtype
+
+    def __call__(self, shape, dtype=None, partition_info=None):
+        return tf.constant(np.ones(shape) * 1 / shape[1] * (np.random.randint(2, size = shape) * 2 - 1), dtype=self.dtype)
 
 def get_initializer(initializer, dtype):
     if initializer == 'zeros':
         return tf.zeros_initializer(dtype=dtype)
     elif initializer == 'vs':
         return tf.variance_scaling_initializer(dtype=dtype)
+    elif initializer=='sc':
+        return signed_constant_initializer(dtype=dtype)
     else:
         raise NotImplementedError
 
