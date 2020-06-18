@@ -38,7 +38,7 @@ class signed_constant_initializer(tf.keras.initializers.Initializer):
         self.dtype = dtype
 
     def __call__(self, shape, dtype=None, partition_info=None):
-        return tf.constant(np.ones(shape) * 1 / shape[1] * (np.random.randint(2, size = shape) * 2 - 1), dtype=self.dtype)
+        return tf.constant(np.sqrt(np.ones(shape) * 2 / shape[0]) * (np.random.randint(2, size = shape) * 2 - 1), dtype=self.dtype)
 
 def get_initializer(initializer, dtype):
     if initializer == 'zeros':
